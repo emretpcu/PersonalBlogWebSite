@@ -1,0 +1,60 @@
+﻿@using PersonalBlogWebSite.Models.EntitiesClass
+@model List<Blog>
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="w3-container">
+        <h2>Tüm Bloglar<p></p><a href="/Admin/RegisterBlog/"><input type="button" class="button-green" value="Blog Kayıt Et" /></a></h2>
+        <br />
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-red">
+                    <th>Blog Id</th>
+                    <th>Blog Başlık</th>
+                    <th>Blog Açıklama</th>
+                    <th>Blog Tarih</th>
+                    <th>Blog Resim</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                    <th>Detaylar</th>
+                </tr>
+            </thead>
+            @foreach (var items in Model)
+            {
+                <tr>
+                    <td>@items.Id</td>
+                    <td>@items.BlogTitle</td>
+                    @if (items.BlogExplanation.Length >= 500)
+                    {
+                        <td>@items.BlogExplanation.Substring(0, 500)..</td>
+                    }
+                    else
+                    {
+                        <td>@items.BlogExplanation</td>
+                    }
+                    <td>@items.BlogCreateDate.ToString("dd.MM.yyyy")</td>
+                    <td><img src="@items.BlogImage" class="w3-border" style="width:300px;height:200px" /></td>
+                    <td><a href="/Admin/DeleteBlog/@items.Id"><input style="margin-top:150%" type="button" class="button-red" value="Sil" /></a></td>
+                    <td><a href="/Admin/UpdateBlog/@items.Id"><input style="margin-top:85%" type="button" class="button-blue" value="Güncelle" /></a></td>
+                    <td><a href="/Blog/BlogDetails/@items.Id"><input style="margin-top:62%" type="button" class="button-gray" value="Blog Detayları" /></a></td>
+
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+</body>
+</html>
+
+
+
+

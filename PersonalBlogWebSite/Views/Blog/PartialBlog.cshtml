@@ -1,0 +1,24 @@
+﻿@using PagedList.Mvc;
+@using PagedList
+@using PersonalBlogWebSite.Models.EntitiesClass
+@model PagedList.IPagedList<Blog>
+
+<div class="content-grid-info">
+    @foreach (var item in Model)
+    {
+        <img src="@item.BlogImage" alt="" />
+        <div class="post-info">
+            <h4><a href="/Blog/BlogDetails/@item.Id">@item.BlogTitle</a>@item.BlogCreateDate.ToString("dd.MM.yyyy")</h4>
+            @if (item.BlogExplanation.Length >= 100)
+            {
+                <p>@item.BlogExplanation.Substring(0, 100)..</p>
+            }
+            else
+            {
+                <p>@item.BlogExplanation</p>
+            }
+            <a href="/Blog/BlogDetails/@item.Id"><span></span>READ MORE</a>
+        </div>
+    }
+</div>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("MainBlog", "Blog", new { page }))

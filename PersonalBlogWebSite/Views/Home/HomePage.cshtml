@@ -1,0 +1,51 @@
+﻿@model PersonalBlogWebSite.Models.EntitiesClass.BlogDetailsModel
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+</head>
+<body>
+    <div class="header-banner">
+        <div class="wrap">
+            <div class="banner">
+                <div class="indent">
+                    <br />  
+                    <br />  
+                    <div class="header_bottom_right_images">
+
+                        <div class="slider" style="margin-right:auto;">
+                            <ul class="rslides" id="slider1">
+                                @foreach (var item in Model.ValueBlog)
+                                {
+                                    <a href="/Blog/BlogDetails/@item.Id">
+                                    <li><img src="@item.BlogImage" style="width:970px;height:500px;" alt="@item.BlogTitle"></li></a>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class"content">
+        <div class="wrap">
+            <div class="wrapper">
+                <div class="con-top">
+                    <h3>Kişisel Blog Sayfama Hoşgeldiniz</h3>
+                    <p>Yazılım ile ilgilenmekte olup web projeleri geliştiriyorum, bu da mvc mimarisi ile yazdığım blog sayfam.</p>
+                </div>
+                <div>
+                    @Html.Action("PartialBlog", "Home")
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

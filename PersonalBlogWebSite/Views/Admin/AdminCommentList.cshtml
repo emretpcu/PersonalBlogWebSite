@@ -1,0 +1,68 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using PersonalBlogWebSite.Models.EntitiesClass
+@model PagedList.IPagedList<Comment>
+@{
+    ViewBag.Title = "AdminCommentList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="w3-container">
+        <h2>Tüm Yorumlar</h2>
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-red">
+                    <th>Yorum Id</th>
+                    <th>Blog Adı</th>
+                    <th>Mail Adresi</th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Yorum Açıklaması</th>
+                    <th>Yorum Tarihi</th>
+                    <th>Yorumun Atıldığı Blog</th>
+                    <th>Sil</th>
+
+                </tr>
+            </thead>
+            @foreach (var items in Model)
+            {
+                <tr>
+                    <td>@items.Id</td>
+                    @{Context ct = new Context();
+                        var blogName = ct.Blogs.Find(items.BlogId);
+                    }
+                    <td>@blogName.BlogTitle</td>
+                    <td>@items.CommentUserMail</td>
+                    <td>@items.CommentUsername</td>
+                    @if (items.CommentExplanation.Length >= 100)
+                    {
+                        <td>@items.CommentExplanation.Substring(0, 100)..</td>
+                    }
+                    else
+                    {
+                        <td>@items.CommentExplanation</td>
+                    }
+                    <td>@items.CommentDate.ToString("dd.MM.yyyy")</td>
+                    <td><a href="/Blog/BlogDetails/@items.BlogId"><input type="button" class="button-gray" value="Blog Detayları" /></a></td>
+
+                    <td><a href="/Admin/DeleteComment/@items.Id"><input type="button" class="button-red" value="Sil" /></a></td>
+
+
+                </tr>
+            }
+        </table>
+        <br />
+    </div>
+    <br />
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdminCommentList", "Admin", new { page }))
+</body>
+</html>

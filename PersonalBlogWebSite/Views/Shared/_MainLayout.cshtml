@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>emretpcu | Blog Web Site</title>
+    <link rel="icon" href="~/Web/images/blogging.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="~/Web/css/style.css" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="~/Web/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="~/Web/js/jquery.min.js"></script>
+    <script src="~/Web/js/responsiveslides.min.js"></script>
+
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="wrap">
+            <div class="logo" style="width:197px;height:60px;"><a href="/Home/HomePage"><img src="~/Web/images/emretpcu.png" alt="" /></a></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="wrap">
+            <ul id="nav">
+                <li><a href="/Home/HomePage">Ana Sayfa</a></li>
+                <li style="margin-left: 35px"><a class="hsubs" href="/About/AboutMe">Hakkımda</a></li>
+                <li style="margin-left: 35px"><a class="hsubs" href="/Blog/MainBlog">Blog</a></li>
+                <li style="margin-left: 35px"><a class="hsubs" href="/Contact/ContactMe">İletişim</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer-bottom">
+        <div class="wrap">
+            <div class="copy">
+                <p>&copy; 2022 Emre Topcu. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

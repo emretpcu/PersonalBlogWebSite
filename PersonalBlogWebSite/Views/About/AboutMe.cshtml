@@ -1,0 +1,33 @@
+﻿@using PersonalBlogWebSite.Models.EntitiesClass
+@model List<About>
+@{
+    ViewBag.Title = "AboutMe";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="content">
+        <div class="wrap">
+            <div class="about">
+                <h3>About Me</h3>
+                @foreach (var item in Model)
+                {
+                    <img src="@item.AboutImage" alt="" />
+                    <br />
+                    <p>@item.AboutExplanation</p>
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

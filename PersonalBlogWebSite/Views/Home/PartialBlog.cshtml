@@ -1,0 +1,54 @@
+﻿@model PersonalBlogWebSite.Models.EntitiesClass.BlogDetailsModel
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="con-bot">
+        @foreach (var item in Model.LastBlog)
+        {
+            <div class="left">
+                <div class="bot-left" style="height:276px;height:184px">
+                    <img src="@item.BlogImage" style="height:100%;width:100%" alt="" />
+                </div>
+                <div class="left-text">
+                    <h4>@item.BlogTitle</h4>
+                    <span class="doller">@item.BlogCreateDate.ToString("dd.MM.yyyy")</span>
+                    @if (item.BlogExplanation.Length >= 50)
+                    {
+                        <p>@item.BlogExplanation.Substring(0, 50)..</p>
+                    }
+                    else
+                    {
+                        <p>@item.BlogExplanation</p>
+                    }
+                    <p><a href="/Blog/BlogDetails/@item.Id"><span class="read">Devamını Oku</span></a></p>
+                </div>
+            </div>
+        }
+        @foreach (var item in Model.FirstBlog)
+        {
+            <div class="right">
+                <div class="bot-left" style="height:276px;height:184px">
+                    <img src="@item.BlogImage" style="height:100%;height:100%" alt="" />
+                </div>
+                <div class="left-text">
+                    <h4>@item.BlogTitle</h4>
+                    <span class="doller">@item.BlogCreateDate.ToString("dd.MM.yyyy")</span>
+                    @if (item.BlogExplanation.Length >= 50)
+                    {
+                        <p>@item.BlogExplanation.Substring(0, 50)..</p>
+                    }
+                    else
+                    {
+                        <p>@item.BlogExplanation</p>
+                    }
+                    <p><a href="/Blog/BlogDetails/@item.Id"><span class="read">Devamını Oku >></span></a></p>
+                </div>
+            </div>
+        }
+
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

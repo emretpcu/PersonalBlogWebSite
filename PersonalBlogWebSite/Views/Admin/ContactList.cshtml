@@ -1,0 +1,56 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using PersonalBlogWebSite.Models.EntitiesClass
+@model PagedList.IPagedList<Contact>
+@{
+    ViewBag.Title = "ContactList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="w3-container">
+        <h2>Tüm Yorumlar</h2>
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-red">
+                    <th>Id</th>
+                    <th>İsim</th>
+                    <th>Mail Adresi</th>
+                    <th>Telefon Numarası</th>
+                    <th>Mesaj</th>
+                    <th>Mesaj Tarihi</th>
+                    <th>Sil</th>
+
+                </tr>
+            </thead>
+            @foreach (var items in Model)
+            {
+                <tr>
+                    <td>@items.Id</td>
+                    <td>@items.Name</td>
+                    <td>@items.Mail</td>
+                    <td>@items.Phone</td>
+                    <td>@items.Message</td>
+                    <td>@items.Date.ToString("dd.MM.yyyy")</td>
+                    <td><a href="/Admin/DeleteContactMessage/@items.Id"><input type="button" class="button-red" value="Sil" /></a></td>
+
+
+                </tr>
+            }
+        </table>
+        <br />
+    </div>
+    <br />
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("ContactList", "Admin", new { page }))
+</body>
+</html>
+
+

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ContactMe";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link href="~/WebBlog/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="~/WebBlog/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+
+</head>
+<body>
+    <!--/header-->
+    <div class="contact-content">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Bizimle İletişime Geç</h2>
+                <p>Bizimle aşşağıdaki form ile iletişime geçebilirsiniz.</p>
+            </div>
+            <div class="contact-details">
+                <form method="post">
+                    <input type="text" name="Name" placeholder="Adınız:" required />
+                    <input type="text" name="Mail" placeholder="Mail Adresiniz:" required />
+                    <input type="text" name="Phone" placeholder="Telefon Numaranız (İsteğe Bağlı) :" />
+                    <input type="hidden" name="Date" value="@DateTime.Now" required />
+                    <textarea name="Message" placeholder="Mesajınız:"></textarea>
+                    <input type="submit" value="SEND" />
+                </form>
+                <br />
+                <h5 style="color:green">@ViewBag.Basarili</h5>
+            </div>
+            <div class="contact-details">
+                <div class="clearfix"></div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
+

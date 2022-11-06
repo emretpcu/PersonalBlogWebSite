@@ -1,0 +1,34 @@
+﻿@model PersonalBlogWebSite.Models.EntitiesClass.Login
+@{
+    ViewBag.Title = "AdminUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <br />
+    @using (Html.BeginForm("AdminUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.LabelFor(x => x.Id)
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        @Html.LabelFor(x => x.Username)
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.Password)
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        <br />
+        <button class="button-blue">Güncelle</button>
+    }
+    <br />
+    <h5 style="color:green">@ViewBag.Basarili</h5>
+
+</body>
+</html>
+
+

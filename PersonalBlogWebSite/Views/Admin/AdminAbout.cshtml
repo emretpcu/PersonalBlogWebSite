@@ -1,0 +1,44 @@
+﻿@model PersonalBlogWebSite.Models.EntitiesClass.About
+@{
+    ViewBag.Title = "AdminAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <br />
+    @using (Html.BeginForm("AdminAbout", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.LabelFor(x => x.Id)
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        <fieldset style="background-color:#eeeeee">
+            <div style="margin-left:1%">
+                <h5><b> Fotoğraf Yükle</b></h5>
+                <br />
+                <input type="file" name="postedFile" />
+                <p style="color:gray;margin-top:1%;margin-bottom:1%"><b>veya</b></p>
+                <h5><b>Fotoğraf'ın İnternet Urlsi ile Fotoğraf Yükle</b></h5>
+                @Html.TextBoxFor(x => x.AboutImage, new { @class = "form-control" })
+                <br />
+            </div>
+        </fieldset>
+        <br />
+        @Html.LabelFor(x => x.AboutExplanation)
+        @Html.TextAreaFor(x => x.AboutExplanation,15, 1, new { @class = "form-control" })
+        <br />
+        <button class="button-blue">Güncelle</button>
+    }
+
+</body>
+</html>
+
+
+
+
