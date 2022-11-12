@@ -9,7 +9,6 @@ namespace PersonalBlogWebSite.Controllers
 {
     public class AboutController : Controller
     {
-        // GET: About
         Context ct = new Context();
         public ActionResult AboutMe()
         {

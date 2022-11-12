@@ -168,6 +168,5 @@ namespace PersonalBlogWebSite.Controllers
             ViewBag.Basarili="Hesap Güncelleme İşleminiz Başarılı !!";
             return View();
         }
-
     }
 }
